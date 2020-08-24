@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+    <div style="width: 1000px; height:600px" id="main"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'))
+        var data_2c = {
+            '2007':[2500,2800,5500,2368],
+            '2008':[2480,2880,5120,2130],
+            '2009':[2280,2900,5023,1999],
+            '2010':[2100,2690,5420,2480],
+            '2011':[1200,2200,3890,3000],
+        };
+        var data_3c = {
+            '2007':[7234,2250,6821,1825],
+            '2008':[7120,2100,6300,2012],
+            '2009':[7399,2098,3470,1329],
+            '2010':[6966,1870,8000,3023],
+            '2011':[8277,1342,9000,2330],
+
+        }
+        option = {
+            baseOption:{
+                timeline:{
+                    axisType:'category',
+                    autoplay:true,
+                    playInterval:1000,
+                    data:['2007','2008','2009','2010',{
+                        value:'2011',
+                        symbol:'diamond',
+                        symbolSize:18
+                    }]
+                },
+                title:{
+                    text:"axis sample"
+                },
+                grid:{
+                    top:'20%',
+                    bottom:'20%'
+                },
+                xAxis:{
+                    type:'category',
+                    data:['Beijing','Shanghai','Tianjin','Chongqing']
+                },
+                yAxis:{
+                    type:'value'
+                },
+                series:[{name:'2nd industry', type:'bar', stack:{}},
+                    {name:'3rd industry', type:'bar', stack:{}}]
+            },
+
+            options:[
+                {
+                    title:{text:'2007 data'},
+                    series:[{data:data_2c['2007']},
+                        {data:data_3c['2007']}]
+
+                },
+                {
+                    title:{text:'2008 data'},
+                    series:[{data:data_2c['2008']},
+                        {data:data_3c['2008']}]
+
+                },
+                {
+                    title:{text:'2009 data'},
+                    series:[{data:data_2c['2009']},
+                        {data:data_3c['2009']}]
+
+                },
+                {
+                    title:{text:'2010 data'},
+                    series:[{data:data_2c['2010']},
+                        {data:data_3c['2010']}]
+
+                },
+                {
+                    title:{text:'2011 data'},
+                    series:[{data:data_2c['2011']},
+                        {data:data_3c['2011']}]
+
+                },
+
+
+
+            ]
+        }
+        myChart.setOption(option)
+    </script>
+</body>
+</html>
